@@ -27,3 +27,25 @@ const enviarFormulario = (event) => {
 
 form.addEventListener('submit', enviarFormulario);
 
+const section = document.querySelector('#section')
+/* const tituloForm = document.querySelector('#tituloForm')
+
+
+tituloForm.addEventListener("click", (event) => {
+    console.log(event.bubbles, event.cancelBubble);
+    event.stopPropagation();
+    console.log(event.bubbles, event.cancelBubble);
+    console.log("CLICK EN EL TITULO");
+}); 
+
+section.addEventListener("click", () => {
+    console.log("CLICK EN LA SECCION");
+});  */
+
+section.addEventListener("click", (event) => {
+    console.log(event.target, event.currentTarget);
+},
+    {
+        capture: true,
+    }
+)
