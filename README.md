@@ -38,11 +38,11 @@
    Los node es cualquier elemento del DOM desde el documento hasta los elements, dispone de unas propiedades comunes el primero es parentElement y children,
    si hago elemento.children me va a mostrar sus hijos o hijo y en el caso de elemento.parentElement es el elemento padre de la gerarquia.
 # Creando y manipulando el DOM
-  ######En este apartado se comienza a dar dinamismo a la pagina web cambiando el HTML desde JavaScript.
+  En este apartado se comienza a dar dinamismo a la pagina web cambiando el HTML desde JavaScript.
     Para comenzar, como se crean elementos que representen etiquetas HTML con document.createElement('h2', 'opcional');.
     Otro es para agregar un texto utilizando document.createTextNode('Ejemplo de agregar texto');.
     Por ultimo esta el document.createComment('crear comentario random'); -> pero no se usa nunca.
-   ######Despues puede que nos interece copiar el elemento, articulo o lo que tenga y cambiar el contenido para eso existe un metodo
+   Despues puede que nos interece copiar el elemento, articulo o lo que tenga y cambiar el contenido para eso existe un metodo
      const articulo = document.querySelector('article');
      const articulo2 = articulo.cloneNode();
      cloneNode() admite un parametro que por defecto esta en false pero si lo paso a true este copiara todo el elemento con sus hijos e      hijos de hijos que tenga. 
