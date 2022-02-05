@@ -56,7 +56,7 @@
         section.insertAdjacentElement('beforeend', articulo2) -> ultimo hijo
         section.insertAdjacentElement('afterend', articulo2) -> primer hijo
      Luego de esto tambien puede interesar incluir texto sin la necesidad de copiarlo de otro lado y se realiza con section.AdjacentText('beforeend', 'Aqui acaba la seccion');
-     Tambien otro ejemplo de uso es section.insertAdjacentHTML ('beforeend', '<h3>Esto es un titulo inventado</3>) esto nos permite incluir HTML en el codigo JavaScript sin tener que crearlo con createElement y demas sino escribirlo como un string e insertarlo directamente.
+     Tambien otro ejemplo de uso es section.insertAdjacentHTML ('beforeend', '<h3>Esto es un titulo inventado</3>') esto nos permite incluir HTML en el codigo JavaScript sin tener que crearlo con createElement y demas sino escribirlo como un string e insertarlo directamente.
      Ahora para eliminar tenemos el metodo section.remove() remobiendo todo lo que este dentro de nuestra seccion en este caso. 
      Se puede tambien reemplazar el contenido de un elemento con section.innerHTML que es una propiedad de lectura pero se puede reescribir con section.innerHTML = '<2>Nuevo titulo de la seccion</2>'. Continuando con este metodo podemos utilizar section.outerHTML = '<2>Nuevo titulo de la seccion completa</2>'  que es para eliminar no solo el contenido de la seccion si no todo completo.
      Por ultimo de estos tenemos innerText que nos permite modificar el contenido de texto de la seccion con section.children[0].textContent = 'Otro titulo mas'.
