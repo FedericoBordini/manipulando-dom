@@ -38,29 +38,41 @@
    Los node es cualquier elemento del DOM desde el documento hasta los elements, dispone de unas propiedades comunes el primero es parentElement y children,
    si hago elemento.children me va a mostrar sus hijos o hijo y en el caso de elemento.parentElement es el elemento padre de la gerarquia.
    
-# Creando y manipulando el DOM
-  En este apartado se comienza a dar dinamismo a la pagina web cambiando el HTML desde JavaScript.
-    Para comenzar, como se crean elementos que representen etiquetas HTML con document.createElement('h2', 'opcional');.
-    Otro es para agregar un texto utilizando document.createTextNode('Ejemplo de agregar texto');.
-    Por ultimo esta el document.createComment('crear comentario random'); -> pero no se usa nunca.
-   Despues puede que nos interece copiar el elemento, articulo o lo que tenga y cambiar el contenido para eso existe un metodo
-     const articulo = document.querySelector('article');
-     const articulo2 = articulo.cloneNode();
-     cloneNode() admite un parametro que por defecto esta en false pero si lo paso a true este copiara todo el elemento con sus hijos e      hijos de hijos que tenga. 
-     Hay una propiedad que nos dice si un elemento pertenece al DOM por que puede estar oculto o sin visualizar articulo.isConnected y      devuelve un booleano. Luego de esto para insertarlo hay que seleccionar al padre de lo que queremos insertar 
-       document.getElementById('section') 
-       section.appendChild(articulo2)
+<h1> Creando y manipulando el DOM </h1>
+  
+ <h3> Creando elemento</h3> 
+ 
+En este apartado se comienza a dar dinamismo a la pagina web cambiando el HTML desde JavaScript. Para crear elementos que representan etiquetas HTML se utiliza           document.createElement('h2', 'opcional'); el opcional es por si se desea escribir algo dentro de la etiqueta. Otro es para agregar un texto utilizando           document.createTextNode('Ejemplo de agregar texto');. Por ultimo se pueden crear comentarios con JavaScript con document.createComment('crear comentario random'); pero no  se utiliza muy amenudo.
+
+  <h3> Clonar elemento </h3>
+  
+Para copiar uno o varios elementos y cambiar el contenido existe metodo articulo.cloneNode() con el siguiente ejemplo 
+const articulo = document.querySelector('article');
+const articulo2 = articulo.cloneNode();
+cloneNode() admite un parametro que por defecto esta en false pero si le asigno true este copiara todo el elemento con sus hijos e hijos de hijos que tenga. 
+
+  <h3> Ubicando un elemento en el DOM </h3>
+  
+Para saber si un elemento pertenece al DOM o no dado a que puede estar oculto o sin visualizar existe articulo.isConnected devolviendo un booleano, para insertarlo hay que seleccionar al padre de lo que queremos insertar 
+
+       - document.getElementById('section') 
+       - section.appendChild(articulo2)
+       
       Para seleccionar donde lo quiero ubicar tengo 4 opciones:
-        section.insertAdjacentElement('beforebegin', articulo2) -> hermano superior 
-        section.insertAdjacentElement('afterbegin', articulo2) -> hermano inferior 
-        section.insertAdjacentElement('beforeend', articulo2) -> ultimo hijo
-        section.insertAdjacentElement('afterend', articulo2) -> primer hijo
-     Luego de esto tambien puede interesar incluir texto sin la necesidad de copiarlo de otro lado y se realiza con section.AdjacentText('beforeend', 'Aqui acaba la seccion');
-     Tambien otro ejemplo de uso es section.insertAdjacentHTML ('beforeend', '<3>Esto es un titulo inventado</3>') esto nos permite incluir HTML en el codigo JavaScript sin tener que crearlo con createElement y demas sino escribirlo como un string e insertarlo directamente.
-     Ahora para eliminar tenemos el metodo section.remove() remobiendo todo lo que este dentro de nuestra seccion en este caso. 
-     Se puede tambien reemplazar el contenido de un elemento con section.innerHTML que es una propiedad de lectura pero se puede reescribir con section.innerHTML = '<2>Nuevo titulo de la seccion</2>'. Continuando con este metodo podemos utilizar section.outerHTML = '<2>Nuevo titulo de la seccion completa</2>'  que es para eliminar no solo el contenido de la seccion si no todo completo.
-     Por ultimo de estos tenemos innerText que nos permite modificar el contenido de texto de la seccion con section.children[0].textContent = 'Otro titulo mas'.
-     Por ultimo podemos modificar atributos con section.getAttribute('id') para localizarlo y asignarlo un nuevo valor section.setAttribute('id', 'otrovalor'). Esto mismo se puede utilizar con class pero tienen otras propiedades como section.classList que nos devuelve un listado de los elemetos y section.className que nos da el nombre de la clase unicamente. Para modificarlo se hace con section.classList.add('NuevaClaseCss') y lo mismo reemplazando add por remove para removerla por ultimo esta el metodo toggle que dice si no tiene una clase que la ponga y si la tiene que la quite todo esto sin concoer el valor que tiene con section.classList.toggle('nuevaClase') devolviendo un booleano o interruptor.  
+      
+       - section.insertAdjacentElement('beforebegin', articulo2) -> hermano superior 
+       - section.insertAdjacentElement('afterbegin', articulo2) -> hermano inferior 
+       - section.insertAdjacentElement('beforeend', articulo2) -> ultimo hijo
+       - section.insertAdjacentElement('afterend', articulo2) -> primer hijo
+       
+Para continuar se puede incluir texto sin la necesidad de copiarlo de otro lado y se realiza con section.AdjacentText('beforeend', 'Aqui acaba la seccion'); siendo las 4 opciones anteriores. 
+Tambien otro ejemplo de uso es section.insertAdjacentHTML ('beforeend', '<3>Esto es un titulo inventado</3>') esto nos permite incluir HTML en el codigo JavaScript sin tener que crearlo con createElement y demas sino escribirlo como un string e insertarlo directamente.
+     
+   <h3> Eliminar elemento </h3>
+   
+Ahora para eliminar tenemos el metodo section.remove() removiendo todo lo que este dentro de nuestra seccion en este caso. Se puede tambien reemplazar el contenido de un elemento con section.innerHTML siendo una propiedad de lectura que se puede reescribir ejemplo section.innerHTML = '<2>Nuevo titulo de la seccion</2>'. Continuando con este metodo podemos utilizar section.outerHTML = '<2>Nuevo titulo de la seccion completa</2>'  que es para eliminar no solo el contenido de la seccion si no todo completo.
+Existe una propiedad llamada innerText que nos permite modificar el contenido del texto de la seccion con section.children[0].textContent = 'Otro titulo mas'.
+Asimismo podemos modificar atributos con section.getAttribute('id') para localizarlo y asignarle un nuevo valor section.setAttribute('id', 'otrovalor'). Esto mismo se puede utilizar con class pero tienen otras propiedades como section.classList que nos devuelve un listado de los elemetos y section.className que nos da el nombre de la clase unicamente. Para modificarlo es con section.classList.add('NuevaClaseCss') y lo mismo reemplazando add por remove para removerla. Por ultimo esta el metodo toggle que dice si no tiene una clase que la ponga y si la tiene que la quite todo esto sin conocer el valor que tiene con section.classList.toggle('nuevaClase') devolviendo un booleano o interruptor, se emplea para escoder menus o elementos que no queremos que se vean en dispositivos mobiles.  
      
    
      
