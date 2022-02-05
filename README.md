@@ -37,6 +37,7 @@
     
    Los node es cualquier elemento del DOM desde el documento hasta los elements, dispone de unas propiedades comunes el primero es parentElement y children,
    si hago elemento.children me va a mostrar sus hijos o hijo y en el caso de elemento.parentElement es el elemento padre de la gerarquia.
+   
 # Creando y manipulando el DOM
   En este apartado se comienza a dar dinamismo a la pagina web cambiando el HTML desde JavaScript.
     Para comenzar, como se crean elementos que representen etiquetas HTML con document.createElement('h2', 'opcional');.
