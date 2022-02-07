@@ -74,6 +74,7 @@ Ahora para eliminar tenemos el metodo section.remove() removiendo todo lo que es
 Existe una propiedad llamada innerText que nos permite modificar el contenido del texto de la seccion con section.children[0].textContent = 'Otro titulo mas'.
 Asimismo podemos modificar atributos con section.getAttribute('id') para localizarlo y asignarle un nuevo valor section.setAttribute('id', 'otrovalor'). Esto mismo se puede utilizar con class pero tienen otras propiedades como section.classList que nos devuelve un listado de los elemetos y section.className que nos da el nombre de la clase unicamente. Para modificarlo es con section.classList.add('NuevaClaseCss') y lo mismo reemplazando add por remove para removerla. Por ultimo esta el metodo toggle que dice si no tiene una clase que la ponga y si la tiene que la quite todo esto sin conocer el valor que tiene con section.classList.toggle('nuevaClase') devolviendo un booleano o interruptor, se emplea para escoder menus o elementos que no queremos que se vean en dispositivos mobiles.  
      
+<h1> Manejar eventos </h1>
    
      
      
