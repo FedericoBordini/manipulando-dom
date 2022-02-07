@@ -2,10 +2,6 @@
   El DOM o document object model es una interfaz o contrato que nos permite acceder al documento HTML desde JavaScript es una representación del documento y todas sus etiquetas 
   en memoria. Desde JavaScript sera un objeto atravez del cual tendremos una serie de metodos que nos permitiran modificar la parte de HTML y cambiar la estructura, los estilos,
   detectar eventos del usuario y ejecutar acciones en nuestro código y demás.
-  Esta es la forma de acceder al DOM: 
-  
-  ![document](https://user-images.githubusercontent.com/21134315/151376537-fa2a08eb-bebc-4029-a29d-dd9fc79320de.png)
-  > Esta es la representación en JavaScript de mi documento (la raiz del DOM)
   
   Document tiene una serie de metodos que nos permite selecionar el nodo que me interesa, estos son por id, por clases o por tipos de etiquetas. Existen más pero estos son los 
   basicos. 
@@ -75,6 +71,46 @@ Existe una propiedad llamada innerText que nos permite modificar el contenido de
 Asimismo podemos modificar atributos con section.getAttribute('id') para localizarlo y asignarle un nuevo valor section.setAttribute('id', 'otrovalor'). Esto mismo se puede utilizar con class pero tienen otras propiedades como section.classList que nos devuelve un listado de los elemetos y section.className que nos da el nombre de la clase unicamente. Para modificarlo es con section.classList.add('NuevaClaseCss') y lo mismo reemplazando add por remove para removerla. Por ultimo esta el metodo toggle que dice si no tiene una clase que la ponga y si la tiene que la quite todo esto sin conocer el valor que tiene con section.classList.toggle('nuevaClase') devolviendo un booleano o interruptor, se emplea para escoder menus o elementos que no queremos que se vean en dispositivos mobiles.  
      
 <h1> Manejar eventos </h1>
-   
-     
+
+Los eventos son sucesos o acciones que ocurren en un momento temporal, es cuando el usuario interactua con la pagina web es decir el evento ocurre sobre elementos HTML o elementos del DOM, la escucha de estos eventos es lo que nos permite darle vida a nuestra web. 
+
+  <h3> Escuchando el evento </h3>
+  <!-- Para mejorar la legibilidad defini con h6 cada uno de los listeners por html id y addeventlistener-->
+Para poder reaccionar a ellos existe la función listeners que nos permite escuchar el evento y ejecutar codigo cuando ese evento ocurra a esto se le conoce como handler o manejador. Hay tres formas de definir estos listeners sin embargo no todas son buenas practicas, empezando por definirlo en el propio documento HTML con on y el evento que queremos escuchar y la llamada a la funcion esta forma no se debe usar bajo ningun concepto dado a que estas mezclando HTML con JavaScipt. La segunda es realizando todo desde el codigo JavaScript seleccionando el id con const titulo2 = document.getElementById("El valor del ID") luego titulo2.onclick aunque tiene como gran desventaja el que al tener un numero limitado de eventos por la propiedad on y lo que quiero escuchar. Por ultimo y la mejor opcion es con addEventListener siendo asi una funcion que permite pasarle dos parametros primero el nombre del evento que quiero escuchar y como segundo el handler viendo tal que asi titulo2.addEventListener("click", clickTitulo) asi tambien se puede eliminar el listener con remove.addEventListener("click", clickTitulo) para desavilitar las acciones en esos botones o elementos. 
+
+Referencia de los eventos que excisten [mozilla developer](https://developer.mozilla.org/es/docs/Web/Events).
+
+Para cualquier tipo de evento en la función que defini al principio simplemente por usar addEventListener nos permite definilo con un parametro como en este ejemplo 
+const clickTitulo = (event) => {console.log(event)} dando como resultado un objeto enorme con muchas propiedades que nos define el evento y una de las mas importantes es target que nos dice que elemento clicamos. 
+
+<h4> DOMContentLoaded </h4>
+Para continuar conociendo los eventos mas interesantes uno de ellos se produce sobre el documento HTML conodico como ***DOMContentLoaded*** que nos indica la carga completa del HTML 
+
+```
+  document.addEventListener("DOMContentLoaded", () => {
+   console.log("El documento se ha cargado")
+  })
+```
+
+<h4> Submit </h4>
+
+El siguiente evento mas utilizado es para enviar un formulario ***submit*** 
+
+```
+  const form = document.querySelector('#formulario');
+  
+  const enviarFormulario = (event) => {
+    event.preventDefault();
+    
+    const { name, email, password } = event.target; 
+    
+    console.log(name.value, email.value, password.value); 
+    
+    if(name.value.length === 0 ) alert("El nombre no es valido");
+    };
+    
+  form.addEventListener('submit', enviarFormulario);
+```
+
+
      
