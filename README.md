@@ -112,5 +112,38 @@ El siguiente evento mas utilizado es para enviar un formulario ***submit***
   form.addEventListener('submit', enviarFormulario);
 ```
 
+<h1>EVENT BUBBLING</h1>
+  
+![DOM-Bubbling1](https://user-images.githubusercontent.com/21134315/153009091-edbc3943-6281-4984-a043-4163f5c3138d.png)
+   > Forma grafica de como capturar un evento.
 
-     
+Como se muestra en la imagen todo en HTML tiene un orden de gerarquia, cuando hacemos click  en la seccion tambien lo hacemos en main y en body y en el propio HTML como se muestra en el diagrama. La primer fase se realiza desde arriba para abajo iniciando la captura en el elemento HTML buscando el elemento donde se a producido el evento, la segunda fase es la de target viendo si el elemento mas profundo tiene asociado un listeners a ese evento y por ultimo, que no siempre existe, la parte de bubbling buscando en cada uno de los elementos padres tambien existe un listeners para ese mismo tipo de eventos (un ejemplo que si lo tiene es el click).
+
+***Referencia de los eventos bubbling*** [mozilla developer](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture)
+
+<h4> Ejemplo de uso de Bubble </h4>
+
+```
+const section = document.querySelector('#section')
+const tituloForm = document.querySelector('#tituloForm')
+
+tituloForm.addEventListener("click", (event) => {
+    console.log(event.bubbles, event.cancelBubble);
+    event.stopPropagation();
+    console.log(event.bubbles, event.cancelBubble);
+    console.log("CLICK EN EL TITULO");
+}); 
+
+section.addEventListener("click", () => {
+    console.log("CLICK EN LA SECCION");
+}); 
+
+section.addEventListener("click", (event) => {
+    console.log(event.target, event.currentTarget);
+},
+    {
+        capture: true,
+    }
+);
+```
+Con capture: true lo que me permite es invertir el orden es decir que este atento a la fase de captura si hay algun listeners definido dado a que por defecto esta en false, siempre utilizandolo por maxima necesidad. 
